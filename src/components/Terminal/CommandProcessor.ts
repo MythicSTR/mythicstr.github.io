@@ -1,5 +1,5 @@
+
 import { SectionId } from "./Terminal";
-import React from "react";
 
 interface CommandInfo {
   name: string;

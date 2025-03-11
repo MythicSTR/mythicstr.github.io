@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 import MatrixBackground from "@/components/MatrixBackground";
+import TypingAnimation from "@/components/TypingAnimation";
 import { ArrowUp } from "lucide-react";
 
 const TerminalPage = () => {
