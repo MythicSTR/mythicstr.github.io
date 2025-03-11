@@ -1,5 +1,6 @@
 
 import { SectionId } from "./Terminal";
+import type { ReactNode } from "react";
 
 interface CommandInfo {
   name: string;
@@ -10,7 +11,7 @@ interface CommandInfo {
 
 export interface CommandResult {
   type: "success" | "error" | "section";
-  message: string | React.ReactNode;
+  message: string | ReactNode;
   sectionId?: SectionId;
 }
 
