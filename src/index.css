@@ -146,6 +146,10 @@
     animation-delay: 500ms;
   }
   
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
   .timeline-dot {
     @apply absolute -left-[9px] h-4 w-4 rounded-full bg-accent;
   }
@@ -202,5 +206,14 @@
   
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }

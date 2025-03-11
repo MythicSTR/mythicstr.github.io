@@ -1,6 +1,8 @@
 
 import { ArrowDown, Github, Linkedin, Download } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import TypingAnimation from "./TypingAnimation";
+import MatrixBackground from "./MatrixBackground";
 
 const HeroSection = () => {
   const titleReveal = useScrollReveal();
@@ -10,6 +12,8 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20">
+      <MatrixBackground />
+      
       <div className="container mx-auto max-w-5xl">
         <div className="grid grid-cols-1 gap-8 px-4">
           <div ref={titleReveal.ref as React.RefObject<HTMLDivElement>} 
@@ -25,7 +29,11 @@ const HeroSection = () => {
               subtitleReveal.isVisible ? 'animate-fade-in' : 'opacity-0'
             }`}
           >
-            Hi, I'm <span className="text-accent">Shishir&nbsp;Tamrakar</span>
+            Hi, I'm <TypingAnimation 
+              texts={["Shishir Tamrakar", "a Developer", "a Designer", "a Problem Solver"]} 
+              typingSpeed={100}
+              className="text-accent"
+            />
           </h1>
           
           <p 
@@ -93,10 +101,6 @@ const HeroSection = () => {
           <ArrowDown size={20} />
         </a>
       </div>
-      
-      {/* Background elements */}
-      <div className="absolute top-40 -right-20 w-80 h-80 bg-accent/5 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-40 -left-20 w-80 h-80 bg-accent/5 rounded-full filter blur-3xl"></div>
     </section>
   );
 };

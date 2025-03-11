@@ -115,6 +115,14 @@ export default {
             backgroundPosition: "1000px 0",
           },
         },
+        blink: {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -126,6 +134,7 @@ export default {
         float: "float 3s ease-in-out infinite",
         spin: "spin 10s linear infinite",
         shimmer: "shimmer 2s infinite linear",
+        blink: "blink 1s step-end infinite",
       },
     },
   },
