@@ -7,6 +7,7 @@ interface TypingAnimationProps {
   deletingSpeed?: number;
   delayBetweenTexts?: number;
   className?: string;
+  loop?: boolean;
 }
 
 const TypingAnimation = ({
@@ -15,6 +16,7 @@ const TypingAnimation = ({
   deletingSpeed = 50,
   delayBetweenTexts = 1000,
   className = "",
+  loop = true,
 }: TypingAnimationProps) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,12 +51,17 @@ const TypingAnimation = ({
         }, deletingSpeed);
       } else {
         setIsTyping(true);
-        setCurrentIndex((currentIndex + 1) % texts.length);
+        // If loop is false and we've gone through all texts, stay at the last index
+        if (!loop && currentIndex === texts.length - 1) {
+          setCurrentIndex(currentIndex);
+        } else {
+          setCurrentIndex((currentIndex + 1) % texts.length);
+        }
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [currentIndex, delayBetweenTexts, deletingSpeed, displayText, isPaused, isTyping, texts, typingSpeed]);
+  }, [currentIndex, delayBetweenTexts, deletingSpeed, displayText, isPaused, isTyping, texts, typingSpeed, loop]);
 
   return (
     <span className={className}>
