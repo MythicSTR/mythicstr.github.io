@@ -1,5 +1,5 @@
-
 import { SectionId } from "./Terminal";
+import React from "react";
 
 interface CommandInfo {
   name: string;
@@ -208,12 +208,7 @@ export class CommandProcessor {
 
     return {
       type: "success",
-      message: (
-        <div className="whitespace-pre-wrap">
-          <p className="font-bold mb-2">Available commands:</p>
-          <pre>{helpContent}</pre>
-        </div>
-      )
+      message: `Available commands:\n\n${helpContent}`
     };
   }
 }

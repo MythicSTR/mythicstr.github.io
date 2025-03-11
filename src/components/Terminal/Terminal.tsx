@@ -76,11 +76,21 @@ const Terminal = ({ onSectionChange }: TerminalProps) => {
       if (result.message === "clear-terminal") {
         setOutput([]);
       } else {
+        // Format the message if it's a string and contains newlines (like help command)
+        let formattedContent = result.message;
+        if (typeof result.message === 'string' && result.message.includes('\n')) {
+          formattedContent = (
+            <div className="whitespace-pre-wrap">
+              <pre>{result.message}</pre>
+            </div>
+          );
+        }
+        
         const resultEntry: OutputEntry = {
           id: `res-${Date.now()}`,
           type: result.type === "error" ? "error" : 
                 result.type === "section" ? "section" : "response",
-          content: result.message
+          content: formattedContent
         };
         
         setOutput(prev => [...prev, resultEntry]);
