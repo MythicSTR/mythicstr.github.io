@@ -54,40 +54,26 @@ const ExperienceSection = () => {
   
   const experiences = [
     {
-      title: "Software Engineer Intern",
+      title: "UI/UX Designer (Freelance)",
       company: "StartIn Lab",
-      duration: "Jun 2023 - Present",
+      duration: "Dec 2024 - Feb 2025",
       description: [
-        "Developed full-stack web applications using React and Spring Boot",
-        "Implemented responsive UI designs with a focus on accessibility and user experience",
-        "Collaborated with cross-functional teams to define and implement new features",
-        "Optimized application performance and reduced load times by 40%"
+        "Sole designer for a social media platform designed to connect entrepreneurs and students, focusing on networking, event participation, and collaboration",
+        "Designed intuitive profile creation, matching, event listing, RSVP, and a chat UI pages in Figma, optimizing for user engagement and seamless interaction without overwhelming the user",
+        "Collaborated with clients in regular stand-ups, iterating on designs, conducting design reviews and introspection to ensure alignment with their vision"
       ],
-      technologies: ["React", "Spring Boot", "PostgreSQL", "Docker", "AWS"]
+      technologies: ["Figma", "UI/UX Design", "Prototyping", "User Research"]
     },
     {
-      title: "UI/UX Design Intern",
+      title: "Internship",
       company: "SmartChoice Technologies",
-      duration: "Jan 2023 - May 2023",
+      duration: "Nov 2024 - Jan 2025",
       description: [
-        "Created wireframes and prototypes for web and mobile applications",
-        "Conducted user research and usability testing to improve product design",
-        "Collaborated with development team to ensure design implementation accuracy",
-        "Redesigned core product features resulting in 25% increase in user engagement"
+        "Bridged the gap between business and development teams by translating client needs into clear technical documentation, and facilitated the integration of two digital wallet providers with the company's payment system",
+        "Collaborated with engineering teams to validate API integrations, troubleshoot transaction issues, and optimize payment flow logic",
+        "Assisted in preparing a detailed WebSocket specification for real-time transaction status updates, including architecture, message flows, and API interactions"
       ],
-      technologies: ["Figma", "Adobe XD", "UI/UX", "Prototyping", "User Testing"]
-    },
-    {
-      title: "Junior Web Developer",
-      company: "Freelance",
-      duration: "Sep 2022 - Dec 2022",
-      description: [
-        "Built responsive websites for small businesses and startups",
-        "Implemented custom features and functionality based on client requirements",
-        "Optimized websites for search engines and performance",
-        "Provided ongoing maintenance and support for client websites"
-      ],
-      technologies: ["HTML/CSS", "JavaScript", "WordPress", "SEO", "PHP"]
+      technologies: ["API Integration", "Technical Documentation", "WebSocket", "Payment Systems"]
     }
   ];
 

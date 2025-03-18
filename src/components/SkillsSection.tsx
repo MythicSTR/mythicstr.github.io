@@ -12,40 +12,40 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    name: "Frontend",
-    icon: <Layout size={24} />,
+    name: "Languages",
+    icon: <Code size={24} />,
     color: "bg-gradient-to-r from-blue-400 to-indigo-500",
-    skills: ["React", "TypeScript", "TailwindCSS", "Next.js", "Redux"]
+    skills: ["Java", "Python", "JavaScript", "SQL"]
   },
   {
     name: "Backend",
     icon: <Server size={24} />,
     color: "bg-gradient-to-r from-green-400 to-emerald-500",
-    skills: ["Java", "Spring Boot", "Node.js", "Express", "Django"]
+    skills: ["Spring Boot", "Spring Data JPA", "Hibernate", "Django", "Node.js", "JSP & Servlet"]
   },
   {
-    name: "Database",
+    name: "Frontend",
+    icon: <Layout size={24} />,
+    color: "bg-gradient-to-r from-purple-400 to-violet-500",
+    skills: ["React.js", "Tailwind CSS", "Figma (UI/UX Design)"]
+  },
+  {
+    name: "Databases",
     icon: <Database size={24} />,
     color: "bg-gradient-to-r from-orange-400 to-pink-500",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Firebase"]
+    skills: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"]
   },
   {
-    name: "Dev Tools",
-    icon: <Code size={24} />,
-    color: "bg-gradient-to-r from-purple-400 to-violet-500",
-    skills: ["Git", "Docker", "CI/CD", "AWS", "VS Code"]
-  },
-  {
-    name: "Web & API",
+    name: "Tools & Libraries",
     icon: <Globe size={24} />,
     color: "bg-gradient-to-r from-cyan-400 to-blue-500",
-    skills: ["REST APIs", "GraphQL", "OAuth", "WebSockets", "Microservices"]
+    skills: ["IntelliJ IDEA", "Eclipse", "Maven", "Apache Tomcat", "Git", "Postman", "VS Code", "Vim"]
   },
   {
-    name: "UI/UX & Other",
+    name: "Practices",
     icon: <Lightbulb size={24} />,
     color: "bg-gradient-to-r from-yellow-400 to-amber-500",
-    skills: ["Figma", "Adobe XD", "Responsive Design", "Machine Learning", "Agile"]
+    skills: ["Agile Development", "Object-Oriented Programming", "Microservices Architecture", "Version Control"]
   }
 ];
 

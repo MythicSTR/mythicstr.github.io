@@ -43,7 +43,7 @@ const AboutSection = () => {
           >
             <h3 className="text-xl font-semibold mb-4">Core Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {["Java", "Python", "React.js", "Spring Boot", "Django", "JavaScript", "TypeScript", "UI/UX Design", "Machine Learning"].map((skill, index) => (
+              {["Java", "Python", "JavaScript", "Spring Boot", "Django", "Node.js", "React.js", "UI/UX Design"].map((skill, index) => (
                 <motion.span
                   key={index}
                   className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"

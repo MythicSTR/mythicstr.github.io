@@ -36,7 +36,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             Hi, I'm <TypingAnimation 
-              texts={["Shishir Tamrakar", "a Developer", "a Designer", "a Problem Solver"]} 
+              texts={["Shishir Tamrakar", "Developer", "Problem Solver"]} 
               typingSpeed={100}
               className="text-accent"
             />
@@ -80,7 +80,7 @@ const HeroSection = () => {
             
             <div className="flex gap-4 items-center">
               <motion.a 
-                href="https://github.com" 
+                href="https://github.com/MythicSTR" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-ghost btn-icon rounded-full"
@@ -91,7 +91,7 @@ const HeroSection = () => {
                 <Github size={20} />
               </motion.a>
               <motion.a 
-                href="https://linkedin.com" 
+                href="https://linkedin.com/in/shishirtamrakar" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-ghost btn-icon rounded-full"

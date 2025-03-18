@@ -1,6 +1,7 @@
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface EducationItemProps {
   icon: React.ReactNode;
@@ -15,11 +16,15 @@ const EducationItem = ({ icon, title, institution, duration, description, index 
   const itemReveal = useScrollReveal({ delay: 200 * index });
   
   return (
-    <div
+    <motion.div
       ref={itemReveal.ref as React.RefObject<HTMLDivElement>}
       className={`glass rounded-xl p-6 hover:shadow-lg transition-all duration-300 ${
         itemReveal.isVisible ? "animate-fade-in" : "opacity-0"
       }`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={itemReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -5 }}
     >
       <div className="flex items-start gap-4">
         <div className="p-3 bg-accent/10 text-accent rounded-lg">
@@ -38,7 +43,7 @@ const EducationItem = ({ icon, title, institution, duration, description, index 
           <p className="text-muted-foreground">{description}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -48,36 +53,25 @@ const EducationSection = () => {
   const educationItems = [
     {
       icon: <GraduationCap size={24} />,
-      title: "BSc. Computer Science",
+      title: "Bachelor of Science in Computer Science",
       institution: "Kathmandu University",
-      duration: "2020 - 2024",
-      description: "Studying algorithms, data structures, software engineering, database systems, and machine learning. Participating in programming competitions and research projects.",
-    },
-    {
-      icon: <Award size={24} />,
-      title: "Machine Learning Specialization",
-      institution: "Coursera (Stanford University)",
-      duration: "2022",
-      description: "Completed a comprehensive specialization covering machine learning algorithms, neural networks, and practical applications. Developed projects in supervised and unsupervised learning.",
-    },
-    {
-      icon: <Award size={24} />,
-      title: "UI/UX Design Professional Certificate",
-      institution: "Google (Coursera)",
-      duration: "2023",
-      description: "Mastered user interface and experience design principles, user research methodologies, wireframing, prototyping, and usability testing. Created a portfolio of design projects.",
+      duration: "Dec 2020 - Present",
+      description: "Related Coursework: Object Oriented Programming, Data Structures and Algorithms, Database Management Systems, Software Engineering",
     }
   ];
 
   return (
-    <section id="education" className="relative overflow-hidden">
+    <section id="education" className="relative overflow-hidden py-16">
       <div className="container mx-auto max-w-5xl">
-        <div
+        <motion.div
           ref={titleReveal.ref as React.RefObject<HTMLDivElement>}
           className={`mb-12 ${titleReveal.isVisible ? "animate-fade-in" : "opacity-0"}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={titleReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title">Education & Certifications</h2>
-        </div>
+          <h2 className="section-title">Education</h2>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6">
           {educationItems.map((item, index) => (

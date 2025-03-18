@@ -3,65 +3,63 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useState } from "react";
 import ProjectModal, { ProjectDetails } from "./ProjectModal";
 import { ExternalLink, Github, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 const projects: ProjectDetails[] = [
   {
     id: "shopping-cart",
-    title: "Shopping Cart System",
-    description: "A comprehensive e-commerce platform with secure payment processing and inventory management.",
-    longDescription: "A fully-featured e-commerce solution built with Spring Boot and React. Features include product catalog, shopping cart, user authentication, payment processing, and inventory management. The system uses PostgreSQL for data storage and AWS for deployment.",
+    title: "Shopping Cart Backend System",
+    description: "A comprehensive backend system with microservices architecture for e-commerce platforms.",
+    longDescription: "Developed robust microservices architecture for product, payment, and order management services using Spring Boot. Designed and implemented RESTful APIs, leveraging Spring Data JPA and Hibernate ORM for efficient data persistence and MySQL for relational storage.",
     image: "",
-    technologies: ["Java", "Spring Boot", "React", "PostgreSQL", "AWS"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    technologies: ["Java", "Spring Boot", "Spring Data JPA", "Hibernate", "MySQL", "Microservices Architecture", "RESTful APIs"],
+    githubUrl: "https://github.com/MythicSTR"
   },
   {
     id: "gesture-recognition",
-    title: "Gesture Recognition System",
+    title: "Gesture-Controlled Digital Interaction System",
     description: "AI-powered system for real-time hand gesture recognition using computer vision techniques.",
-    longDescription: "A machine learning model that recognizes hand gestures in real-time using computer vision. Built with Python, TensorFlow, and OpenCV. The system can recognize over 20 different hand gestures with 95% accuracy and has applications in accessibility and human-computer interaction.",
+    longDescription: "Developed a real-time gesture recognition system, enabling touches computer interaction via hand gestures. Implemented a Conv3D + LSTM hybrid model trained on a Kaggle dataset, applying proper data augmentation techniques, and achieving an overall 75% accuracy.",
     image: "",
-    technologies: ["Python", "TensorFlow", "OpenCV", "Machine Learning"],
-    githubUrl: "https://github.com"
+    technologies: ["Python", "OpenCV", "NumPy", "TensorFlow"],
+    githubUrl: "https://github.com/MythicSTR"
   },
   {
     id: "munchy",
     title: "Munchy",
-    description: "Food delivery app connecting local restaurants with customers for seamless ordering.",
-    longDescription: "A food delivery platform that connects local restaurants with hungry customers. Features include restaurant discovery, menu browsing, order placement, real-time tracking, and payment processing. Built with React Native for cross-platform mobile support.",
+    description: "On-Site Restaurant Ordering System for seamless ordering and management.",
+    longDescription: "Developed a real-time restaurant ordering application enabling customers to browse menus, customize orders, and place them instantly. Designed a responsive and interactive UI, integrated live order tracking, and dynamic menu updates, ensuring instant transmission to restaurant systems for faster processing and efficient order management.",
     image: "",
-    technologies: ["React Native", "Node.js", "MongoDB", "Firebase"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    technologies: ["FlutterFlow", "Firebase"],
+    githubUrl: "https://github.com/MythicSTR"
   },
   {
     id: "unify",
     title: "Unify",
-    description: "Team collaboration platform with real-time messaging, file sharing, and task management.",
-    longDescription: "A comprehensive team collaboration tool that combines messaging, file sharing, and task management. Features include channels, direct messages, file uploads, task assignments, and calendar integration. Built with a microservices architecture for scalability.",
+    description: "Classroom Allocation Management System with dynamic scheduling and resource management.",
+    longDescription: "Built RESTful API endpoints with Django for dynamic classroom scheduling and real-time data management, ensuring smooth interaction with the frontend. Utilized PostgreSQL for robust data storage and Django's ORM for efficient querying and management of classroom, schedule, and resource data.",
     image: "",
-    technologies: ["TypeScript", "NestJS", "React", "WebSockets", "Docker"],
-    githubUrl: "https://github.com"
+    technologies: ["Django", "React.js", "PostgreSQL", "RESTful APIs"],
+    githubUrl: "https://github.com/MythicSTR/Unify"
   },
   {
     id: "unilife",
     title: "Unilife",
-    description: "Student management system for universities with course registration and grade tracking.",
-    longDescription: "A student management system designed for universities. Features include course registration, attendance tracking, grade management, academic calendar, and student profiles. The system provides separate interfaces for students, faculty, and administrators.",
+    description: "E-commerce and Local Discovery Platform with authentication and search functionality.",
+    longDescription: "Developed a full-stack platform combining e-commerce and hostel search functionalities, enabling efficient handling of user authentication, product listings, and hostel search queries. Utilized JWT for secure, stateless authentication, and MongoDB to store and manage product and hostel data, ensuring seamless retrieval and updates.",
     image: "",
-    technologies: ["Django", "PostgreSQL", "React", "Redux", "Docker"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    technologies: ["React.js", "Node.js", "Express", "MongoDB", "JWT"],
+    githubUrl: "https://github.com/MythicSTR/Unilife"
   },
   {
-    id: "portfolio",
-    title: "Portfolio Website",
-    description: "Personal portfolio website showcasing projects and skills with a modern design.",
-    longDescription: "A personal portfolio website built with React and Tailwind CSS. Features a responsive design, project showcase, skills visualization, and contact form. The website includes subtle animations and transitions for an engaging user experience.",
+    id: "fordays",
+    title: "Fordays Japanese Language Classroom Portal",
+    description: "Single-page application for a Japanese language classroom at Kathmandu University.",
+    longDescription: "Developed a single-page application to showcase the Fordays Japanese language classroom at Kathmandu University. Designed and implemented user-friendly interface for sections including About Us, Students & Alumni, and Events, providing a seamless user experience.",
     image: "",
-    technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com"
+    technologies: ["React.js", "Tailwind CSS"],
+    githubUrl: "https://github.com/MythicSTR",
+    liveUrl: "https://japaneselanguage.ku.edu.np/"
   }
 ];
 
@@ -69,11 +67,15 @@ const ProjectCard = ({ project, onClick }: { project: ProjectDetails; onClick: (
   const cardReveal = useScrollReveal();
   
   return (
-    <div
+    <motion.div
       ref={cardReveal.ref as React.RefObject<HTMLDivElement>}
       className={`glass rounded-xl overflow-hidden group h-full transition-all duration-300 hover:shadow-lg ${
         cardReveal.isVisible ? "animate-fade-in" : "opacity-0"
       }`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={cardReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -5 }}
     >
       <div className="aspect-video bg-accent/10 group-hover:bg-accent/20 transition-all relative overflow-hidden">
         <div className="w-full h-full flex items-center justify-center">
@@ -81,12 +83,14 @@ const ProjectCard = ({ project, onClick }: { project: ProjectDetails; onClick: (
         </div>
         
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <button
+          <motion.button
             onClick={onClick}
             className="btn btn-accent flex items-center gap-2 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <Plus size={18} /> View Details
-          </button>
+          </motion.button>
         </div>
       </div>
       
@@ -133,7 +137,7 @@ const ProjectCard = ({ project, onClick }: { project: ProjectDetails; onClick: (
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -142,14 +146,20 @@ const ProjectsSection = () => {
   const titleReveal = useScrollReveal();
 
   return (
-    <section id="projects" className="relative overflow-hidden">
+    <section id="projects" className="relative overflow-hidden py-16">
       <div className="container mx-auto max-w-6xl">
-        <div
+        <motion.div
           ref={titleReveal.ref as React.RefObject<HTMLDivElement>}
           className={`mb-12 ${titleReveal.isVisible ? "animate-fade-in" : "opacity-0"}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={titleReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Projects</h2>
-        </div>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-center mt-4">
+            A selection of my recent work and personal projects
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
