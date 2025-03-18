@@ -1,68 +1,87 @@
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
+import { Code, Database, Server, Globe, Layout, Lightbulb } from "lucide-react";
 
 interface SkillCategory {
   name: string;
+  icon: React.ReactNode;
   skills: string[];
+  color: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    name: "Languages",
-    skills: ["Java", "Python", "JavaScript", "TypeScript", "HTML", "CSS", "SQL", "C++"]
+    name: "Frontend",
+    icon: <Layout size={24} />,
+    color: "bg-gradient-to-r from-blue-400 to-indigo-500",
+    skills: ["React", "TypeScript", "TailwindCSS", "Next.js", "Redux"]
   },
   {
-    name: "Frameworks & Libraries",
-    skills: ["React.js", "Spring Boot", "Django", "Node.js", "Express", "TailwindCSS", "Bootstrap", "jQuery"]
+    name: "Backend",
+    icon: <Server size={24} />,
+    color: "bg-gradient-to-r from-green-400 to-emerald-500",
+    skills: ["Java", "Spring Boot", "Node.js", "Express", "Django"]
   },
   {
-    name: "Tools & Platforms",
-    skills: ["Git", "Docker", "AWS", "Heroku", "Firebase", "Netlify", "VS Code", "IntelliJ IDEA"]
+    name: "Database",
+    icon: <Database size={24} />,
+    color: "bg-gradient-to-r from-orange-400 to-pink-500",
+    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Firebase"]
   },
   {
-    name: "Databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite"]
+    name: "Dev Tools",
+    icon: <Code size={24} />,
+    color: "bg-gradient-to-r from-purple-400 to-violet-500",
+    skills: ["Git", "Docker", "CI/CD", "AWS", "VS Code"]
   },
   {
-    name: "Design",
-    skills: ["Figma", "Adobe XD", "Photoshop", "UI/UX", "Wireframing", "Prototyping"]
+    name: "Web & API",
+    icon: <Globe size={24} />,
+    color: "bg-gradient-to-r from-cyan-400 to-blue-500",
+    skills: ["REST APIs", "GraphQL", "OAuth", "WebSockets", "Microservices"]
   },
   {
-    name: "Other",
-    skills: ["RESTful APIs", "GraphQL", "Microservices", "CI/CD", "Agile", "Scrum", "TDD", "Machine Learning"]
+    name: "UI/UX & Other",
+    icon: <Lightbulb size={24} />,
+    color: "bg-gradient-to-r from-yellow-400 to-amber-500",
+    skills: ["Figma", "Adobe XD", "Responsive Design", "Machine Learning", "Agile"]
   }
 ];
-
-const SkillHexagon = ({ skill, index }: { skill: string; index: number }) => {
-  const hexReveal = useScrollReveal({ delay: 50 * index });
-  
-  return (
-    <div
-      ref={hexReveal.ref as React.RefObject<HTMLDivElement>}
-      className={`hexagon aspect-square flex items-center justify-center glass hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 ${
-        hexReveal.isVisible ? "animate-fade-in" : "opacity-0"
-      }`}
-    >
-      <span className="text-sm font-medium text-balance text-center px-2">{skill}</span>
-    </div>
-  );
-};
 
 const SkillCategory = ({ category, index }: { category: SkillCategory; index: number }) => {
   const categoryReveal = useScrollReveal({ delay: 200 * index });
   
   return (
-    <div
+    <motion.div
       ref={categoryReveal.ref as React.RefObject<HTMLDivElement>}
-      className={`mb-10 ${categoryReveal.isVisible ? "animate-fade-in" : "opacity-0"}`}
+      className={`${categoryReveal.isVisible ? "animate-fade-in" : "opacity-0"}`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={categoryReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ translateY: -5 }}
     >
-      <h3 className="text-xl font-semibold mb-6">{category.name}</h3>
-      <div className="flex flex-wrap gap-4">
-        {category.skills.map((skill, i) => (
-          <SkillHexagon key={i} skill={skill} index={i} />
-        ))}
+      <div className="bg-card rounded-xl p-6 h-full shadow-sm hover:shadow-md transition-all duration-300">
+        <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-white mb-4 ${category.color}`}>
+          {category.icon}
+        </div>
+        <h3 className="text-xl font-semibold mb-3">{category.name}</h3>
+        <div className="flex flex-wrap gap-2 mt-4">
+          {category.skills.map((skill, i) => (
+            <motion.span 
+              key={i}
+              className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 * i + 0.3 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              {skill}
+            </motion.span>
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -70,16 +89,22 @@ const SkillsSection = () => {
   const titleReveal = useScrollReveal();
   
   return (
-    <section id="skills" className="relative overflow-hidden bg-secondary/50">
+    <section id="skills" className="relative overflow-hidden py-16 bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <div
+        <motion.div
           ref={titleReveal.ref as React.RefObject<HTMLDivElement>}
           className={`mb-12 ${titleReveal.isVisible ? "animate-fade-in" : "opacity-0"}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={titleReveal.isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Skills & Technologies</h2>
-        </div>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-center mt-4">
+            A curated selection of technologies I specialize in
+          </p>
+        </motion.div>
 
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <SkillCategory key={index} category={category} index={index} />
           ))}
